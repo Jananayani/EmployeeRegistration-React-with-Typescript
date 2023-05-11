@@ -1,1 +1,0 @@
-# EmployeeRegistration-React-with-Typescript
