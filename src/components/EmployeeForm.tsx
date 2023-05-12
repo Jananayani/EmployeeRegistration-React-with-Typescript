@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import DepartmentDropdown from './DepartmentDropdown';
 import EditEmployeeForm, { Employee } from './EditEmployeeForm';
 import './EmployeeForm.style.css';
+// import DepartmentSearchBar from './DepartmentDropdown';
 
 interface Props {
   onAdd: (employee: Employee) => void;
 }
+
 
 const EmployeeForm: React.FC<Props> = ({ onAdd }) => {
   const [name, setName] = useState('');
@@ -15,7 +17,7 @@ const EmployeeForm: React.FC<Props> = ({ onAdd }) => {
   const [nextId, setNextId] = useState(1);
   const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null);
 
-  const departments = ['Select Department','Development','Quality Assurance','Project Management','Technical Support', 'HR', 'Marketing'];
+   const departments = ['Development','Quality Assurance','Project Management','Technical Support', 'HR', 'Marketing'];
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -88,11 +90,13 @@ const EmployeeForm: React.FC<Props> = ({ onAdd }) => {
               onChange={handleEmailChange}
             />
           </div>
-          <DepartmentDropdown
+        
+           <DepartmentDropdown
             options={departments}
             selectedOption={department}
             onOptionChange={handleDepartmentChange}
           />
+        
           <button type="submit">Add Employee</button>
         </form>
       )}

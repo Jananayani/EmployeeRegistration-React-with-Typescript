@@ -8,18 +8,19 @@ export type Employee = {
   department: string;
 };
 
-type EditEmployeeFormProps = {
-  employee: Employee;
-  onEdit: (editedEmployee: Employee) => void;
-  onCancel: () => void;
-};
+  type EditEmployeeFormProps = {
+    employee: Employee;
+    onEdit: (editedEmployee: Employee) => void;
+    onCancel: () => void;
+  };
 
 const EditEmployeeForm = ({ employee, onEdit, onCancel }: EditEmployeeFormProps) => {
   const [name, setName] = useState(employee.name);
   const [email, setEmail] = useState(employee.email);
   const [department, setDepartment] = useState(employee.department);
 
-  const departments = ['HR', 'Engineering', 'Marketing'];
+  const departments = ['Development','Quality Assurance','Project Management','Technical Support', 'HR', 'Marketing'];
+
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 type DepartmentDropdownProps = {
   options: string[];
@@ -11,20 +11,37 @@ const DepartmentDropdown: FC<DepartmentDropdownProps> = ({
   selectedOption,
   onOptionChange,
 }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const matchingOptions = options.filter(option =>
+    option.toLowerCase().startsWith(inputValue.toLowerCase())
+  );
+
+  const handleOptionClick = (option: string) => {
+    setInputValue(option);
+    onOptionChange(option);
+  };
+
   return (
     <div>
       <label htmlFor="department">Department:</label>
-      <select
+      <input
         id="department"
-        value={selectedOption}
-        onChange={(event) => onOptionChange(event.target.value)}
-      >
-        {options.map((option) => (
-          <option key={option} value={option}>
+        placeholder="Search for a department"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+      <ul>
+        {matchingOptions.map((option) => (
+          <li key={option} onClick={() => handleOptionClick(option)}>
             {option}
-          </option>
+          </li>
         ))}
-      </select>
+      </ul>
     </div>
   );
 };

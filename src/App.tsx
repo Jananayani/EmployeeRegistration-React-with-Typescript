@@ -25,9 +25,9 @@ const App = () => {
     setEditingEmployee(null);
   };
 
-  const startEditingEmployee = (employee: Employee) => {
-    setEditingEmployee(employee);
-  };
+  // const startEditingEmployee = (employee: Employee) => {
+  //   setEditingEmployee(employee);
+  // };
 
   const cancelEditingEmployee = () => {
     setEditingEmployee(null);
